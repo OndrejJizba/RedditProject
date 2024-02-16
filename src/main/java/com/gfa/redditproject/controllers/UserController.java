@@ -47,11 +47,18 @@ public class UserController {
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model){
         if (userService.loginValidate(username, password)) {
-            model.addAttribute("user", username);
+            model.addAttribute("user", "Successfully logged in as " + username);
             return "mainpage";
         } else {
             model.addAttribute("user", "Wrong password or user doesn't exist.");
             return "login";
         }
+    }
+
+    @GetMapping("logout")
+    public String logout(Model model){
+        userService.logout();
+        model.addAttribute("user", "Successfully logged out.");
+        return "mainpage";
     }
 }

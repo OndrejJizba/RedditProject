@@ -36,6 +36,20 @@ public class UserServiceImp implements UserService{
     @Override
     public boolean loginValidate(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, password);
+        user.setActiveUser(true);
+        userRepository.save(user);
         return user != null;
+    }
+
+    @Override
+    public void logout() {
+        User user = userRepository.findByActiveUserIsTrue();
+        user.setActiveUser(false);
+        userRepository.save(user);
+    }
+
+    @Override
+    public boolean isSomeUserLoggedIn() {
+        return userRepository.findByActiveUserIsTrue() != null;
     }
 }

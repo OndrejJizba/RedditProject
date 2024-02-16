@@ -7,4 +7,6 @@ public interface UserService {
     boolean validateUser (String username);
     void save (User user);
     boolean loginValidate (String username, String password);
+    void logout();
+    boolean isSomeUserLoggedIn();
 }
