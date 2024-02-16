@@ -19,9 +19,11 @@ public class Post {
     private Long id;
     private int votes;
     private String title;
+    private String URL;
 
-    public Post(String title) {
+    public Post(String title, String URL) {
         this.title = title;
+        this.URL = URL;
         this.votes = 0;
     }
 }

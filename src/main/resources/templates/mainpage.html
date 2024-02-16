@@ -5,6 +5,16 @@
     <title>Reddit</title>
 </head>
 <body>
-
+<a href="/newpost">Submit a new post</a>
+    <table>
+        <tbody>
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.votes}"></td>
+                <td>+</td>
+                <td>-</td>
+                <td th:text="${post.title}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
