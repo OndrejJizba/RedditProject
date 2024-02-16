@@ -45,4 +45,10 @@ public class PostController {
         postService.downvote(id);
         return "redirect:/";
     }
+
+    @GetMapping("/top10")
+    public String getTop10ByVotes(Model model) {
+        model.addAttribute("posts", postService.getTop10PostsByVotes());
+        return "mainpage";
+    }
 }
