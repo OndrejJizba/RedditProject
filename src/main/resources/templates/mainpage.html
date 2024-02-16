@@ -10,9 +10,9 @@
         <tbody>
             <tr th:each="post : ${posts}">
                 <td th:text="${post.votes}"></td>
-                <td>+</td>
-                <td>-</td>
-                <td th:text="${post.title}"></td>
+                <td><a th:href="@{/upvote/{id} (id = ${post.id})}">+</a></td>
+                <td><a th:href="@{/downvote/{id} (id = ${post.id})}">-</a></td>
+                <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
             </tr>
         </tbody>
     </table>

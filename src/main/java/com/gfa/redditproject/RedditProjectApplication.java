@@ -23,7 +23,7 @@ public class RedditProjectApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		postService.save(new Post("Test", "google.com"));
-		postService.save(new Post("Test2", "seznam.cz"));
+		postService.save(new Post("Test", "https://google.com"));
+		postService.save(new Post("Test2", "https://seznam.cz"));
 	}
 }
