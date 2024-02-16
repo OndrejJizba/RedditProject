@@ -30,12 +30,28 @@ public class UserController {
             userService.save(new User(username, password));
             model.addAttribute("password", "Registration successful");
             return "register";
-        } else if (!userService.validatePassword(password, retypePassword)) {
-            model.addAttribute("password", "Passwords are not the same");
-            return "register";
         } else if (!userService.validateUser(username)) {
             model.addAttribute("user", "User already exists.");
             return "register";
+        } else if (!userService.validatePassword(password, retypePassword)) {
+                model.addAttribute("password", "Passwords are not the same");
+                return "register";
         } return "register";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password, Model model){
+        if (userService.loginValidate(username, password)) {
+            model.addAttribute("user", username);
+            return "mainpage";
+        } else {
+            model.addAttribute("user", "Wrong password or user doesn't exist.");
+            return "login";
+        }
     }
 }

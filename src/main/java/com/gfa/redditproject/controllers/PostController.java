@@ -18,8 +18,9 @@ public class PostController {
     }
 
     @GetMapping({"", "/"})
-    public String mainPage(Model model){
+    public String mainPage(@RequestParam (required = false) String user, Model model){
         model.addAttribute("posts", postService.getAll());
+        model.addAttribute("user", user);
         return "mainpage";
     }
 

@@ -24,11 +24,18 @@ public class UserServiceImp implements UserService{
 
     @Override
     public boolean validateUser(String username) {
-        return !username.equals(userRepository.findAllByUsername(username));
+        User user = userRepository.findByUsername(username);
+        return user == null;
         }
 
     @Override
     public void save(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    public boolean loginValidate(String username, String password) {
+        User user = userRepository.findByUsernameAndPassword(username, password);
+        return user != null;
     }
 }
