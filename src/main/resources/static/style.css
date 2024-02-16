@@ -1,0 +1,31 @@
+tr {
+    height: 60px;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.navbar {
+    border-radius: 15px;
+}
+
+.new-post {
+    background-color: white;
+    border-radius: 15px;
+}
+
+#cancel-button {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
