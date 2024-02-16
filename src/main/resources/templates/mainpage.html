@@ -12,6 +12,7 @@
                 <td th:text="${post.votes}"></td>
                 <td><a th:href="@{/upvote/{id} (id = ${post.id})}">+</a></td>
                 <td><a th:href="@{/downvote/{id} (id = ${post.id})}">-</a></td>
+                <td th:text="${post.date.getDayOfMonth()} + '/' + ${post.date.getMonthValue()} + '/' + ${post.date.getYear()}"></td>
                 <td><a th:href="${post.URL}" th:text="${post.title}"></a></td>
             </tr>
         </tbody>

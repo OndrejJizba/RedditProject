@@ -9,4 +9,5 @@ public interface PostService {
     List<Post> getAll();
     void upvote(Long id) throws Exception;
     void downvote(Long id) throws Exception;
+    public List<Post> getTop10PostsByVotes();
 }

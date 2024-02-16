@@ -5,6 +5,8 @@ import com.gfa.redditproject.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,7 @@ public class PostServiceImp implements PostService{
     public List<Post> getAll() {
         return postRepository.findAll();
     }
-
+    @Override
     public void upvote(Long id) throws Exception {
         Optional<Post> postToUpvote = postRepository.findById(id);
         Post post = postToUpvote.orElseThrow(() -> new Exception("Post not found"));
@@ -41,5 +43,9 @@ public class PostServiceImp implements PostService{
         Post post = postToUpvote.orElseThrow(() -> new Exception("Post not found"));
         if (post.getVotes() > 0) post.setVotes(post.getVotes() - 1);
         postRepository.save(post);
+    }
+
+    public List<Post> getTop10PostsByVotes() {
+        return postRepository.findTop10ByOrderByVotesDesc();
     }
 }

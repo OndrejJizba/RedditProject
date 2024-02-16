@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -20,10 +23,13 @@ public class Post {
     private int votes;
     private String title;
     private String URL;
+    @CreationTimestamp
+    private LocalDate date;
 
     public Post(String title, String URL) {
         this.title = title;
         this.URL = URL;
         this.votes = 0;
+        this.date = getDate();
     }
 }
