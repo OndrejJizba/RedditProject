@@ -19,6 +19,7 @@ public class User {
     private Long Id;
     private String username;
     private String password;
+    private String retypePassword;
 
     public User(String username, String password) {
         this.username = username;
